@@ -25,7 +25,7 @@ using UnityEngine;
         }
 
         private void checkForCanShoot(){
-          if (timeStart < .2 * spb || timeStart > 0.8 * spb)
+          if (timeStart < .25 * spb || timeStart > 0.75 * spb)
             {
                 canShoot = true;
             }
