@@ -10,17 +10,22 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] EnemyHealthBar health;
     [SerializeField] int moneyValue = 10;
     MoneyStorage moneyStorage;
+    EnemyCount EnemyCount;
+
     void Start()
     {
         currentHealth = maxHealth;
         health.SetMaxHealth(maxHealth);
         moneyStorage = FindObjectOfType<MoneyStorage>();
+        EnemyCount = transform.parent.gameObject.GetComponent<EnemyCount>();
     }
     void Update(){
       if (currentHealth ==0){
         moneyStorage.MoneyHit(moneyValue);
+        EnemyCount.DecrementCount();
         Destroy(gameObject);
       }
+      
     }
 
     void OnTriggerEnter(Collider collider){
