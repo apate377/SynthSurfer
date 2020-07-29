@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoneyStorage : MonoBehaviour
 {
     int money;
+    Dictionary<string, int> SongPack = new Dictionary<string, int>();
 
     void Awake(){
       DontDestroyOnLoad(this.gameObject);
@@ -17,5 +18,8 @@ public class MoneyStorage : MonoBehaviour
     //getters
     public float GetMoney(){
       return money;
+    }
+    public int GetSongPack(string genre){
+      return SongPack[genre];
     }
 }
