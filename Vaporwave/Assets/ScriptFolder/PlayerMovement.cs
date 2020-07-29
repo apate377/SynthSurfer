@@ -15,16 +15,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject Particles, Particles1, Particles2, Particles3;
     private float xInput, zInput;
     private Rigidbody rbCar;
+    private bool playerEnabled = true;
 
     void Start(){
       rbCar = Car.GetComponent<Rigidbody>();
     }
     void Update()
     {
+      if (playerEnabled){
         CalculatePosition();
         CalculateRotation();
         Shoot();
-
+      }
     }
 
     private void Shoot() {
@@ -53,10 +55,7 @@ public class PlayerMovement : MonoBehaviour
       CalculateParticleRotation();
       float xOffset = xInput * xSpeed * Time.deltaTime;
       float zOffset = zInput * zSpeed * Time.deltaTime;
-      //float xPos = transform.position.x + xOffset;
-      //float zPos = transform.position.z + zOffset;
       rbCar.AddForce(xOffset, 0f, zOffset);
-      //Car.transform.position = new Vector3(xPos, transform.position.y, zPos);
       transform.position = new Vector3(Car.transform.position.x, transform.position.y, Car.transform.position.z);
     }
     private void CalculateParticleRotation(){
@@ -81,25 +80,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void CalculateRotation(){
-      // float xInput2 = CrossPlatformInputManager.GetAxis("Mouse X");
-      // float yInput2 = CrossPlatformInputManager.GetAxis("Mouse Y");
-      // float rotation;
-      // if (xInput2 > 0f){
-      //   rotation = (180/ Mathf.PI)* Mathf.Atan(yInput2/xInput2);
-      // }
-      // else if (xInput2 < 0f){
-      //   rotation = (180/ Mathf.PI)* Mathf.Atan(yInput2/xInput2) + 180;
-      // }
-      // else if (yInput2 < 0f){
-      //   rotation = 90f;
-      // }
-      // else if (yInput2 > 0f){
-      //   rotation = 270f;
-      // }
-      // else{
-      //   rotation = 0f;
-      // }
-      // Car.transform.localRotation = Quaternion.Euler(0f, rotation, 0f);
       RaycastHit hit;
       Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
       if (Physics.Raycast(ray, out hit, 100.0f, 1 << LayerMask.NameToLayer("Raycast"))){
@@ -111,4 +91,10 @@ public class PlayerMovement : MonoBehaviour
         Car.transform.LookAt(mousePos.transform.position);
       }
     }
+
+    //setters and getters
+    public void SetPlayerEnabled(bool set){
+      playerEnabled = set;
+    }
+
 }

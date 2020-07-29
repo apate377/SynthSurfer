@@ -11,7 +11,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject OptionsMenu;
 
     public void PlayGame(){
-      StartCoroutine(LoadLevel());
+      StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+    public void GoBackToMenu(){
+      StartCoroutine(LoadLevel(0));
+    }
+    public void RestartLevel(){
+      StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
     }
 
     public void OpenOptions() {
@@ -19,10 +25,10 @@ public class MainMenu : MonoBehaviour
       OptionsMenu.SetActive(true);
     }
 
-    IEnumerator LoadLevel() {
+    IEnumerator LoadLevel(int index) {
       transition.SetTrigger("Start");
       yield return new WaitForSeconds(transitionTime);
-      asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+      asyncOperation = SceneManager.LoadSceneAsync(index);
     }
 
     public void QuitGame(){

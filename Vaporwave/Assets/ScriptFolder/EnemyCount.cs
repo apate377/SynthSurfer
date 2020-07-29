@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyCount : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] private GameObject winScreen;
     private int count;
 
     void Start()
@@ -20,7 +21,7 @@ public class EnemyCount : MonoBehaviour
     public void DecrementCount() {
         count--;
         if (count == 0) {
-            // Enable Win Screen
+            winScreen.SetActive(true);
         }
         print(count);
     }
