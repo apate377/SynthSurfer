@@ -37,9 +37,12 @@ public class EnemyShoot : MonoBehaviour
 
           if (Physics.Raycast(rayToPlayer, out hit)) {
             chase = true;
-            agent.SetDestination(player.transform.position);
-            Shoot();
             FacePlayer();
+            agent.SetDestination(player.transform.position);
+
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player")) {
+                Shoot();
+            }
           }
         }
     }
