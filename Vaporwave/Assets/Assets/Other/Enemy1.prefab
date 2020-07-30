@@ -158,7 +158,7 @@ MonoBehaviour:
     type: 3}
   EnemyFirePoint: {fileID: 4526947794374355901}
   bulletForce: 20
-  player: {fileID: 6313299608028771134, guid: 3131ef9fb16d94f0db7d68f616a9b1ba, type: 3}
+  player: {fileID: 0}
   agent: {fileID: 416938691}
 --- !u!65 &2743104471264314215
 BoxCollider:
@@ -217,7 +217,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

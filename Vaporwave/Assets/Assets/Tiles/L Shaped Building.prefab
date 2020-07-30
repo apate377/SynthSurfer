@@ -812,6 +812,7 @@ GameObject:
   - component: {fileID: 4654302700403592678}
   - component: {fileID: 2845005124310809047}
   - component: {fileID: 3596077484557247244}
+  - component: {fileID: 5930430066105919474}
   m_Layer: 0
   m_Name: L Shaped Building
   m_TagString: Untagged
@@ -922,6 +923,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2576483932155141947}
+  m_Mesh: {fileID: 0}
+--- !u!64 &5930430066105919474
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2576483932155141947}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
   m_Mesh: {fileID: 0}
 --- !u!1 &2609022156703641733
 GameObject:
@@ -2534,17 +2549,9 @@ MonoBehaviour:
   assetGuid: 
   m_Mesh: {fileID: 0}
   m_IsSelectable: 1
-  m_SelectedFaces: 00000000
-  m_SelectedEdges:
-  - a: 0
-    b: 1
-  - a: 2
-    b: 0
-  - a: 1
-    b: 3
-  - a: 3
-    b: 2
-  m_SelectedVertices: 00000000010000000200000003000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!33 &4791449800994378657
 MeshFilter:
   m_ObjectHideFlags: 0
