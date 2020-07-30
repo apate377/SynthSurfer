@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ForceFieldMat
+  m_Shader: {fileID: 4800000, guid: d88acdc47f0a647a1b68da419c371e53, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_DAAC56:
+        m_Texture: {fileID: 2800000, guid: ea54a2ed37ce14f5f9539417765e778d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_642B0889: 0.01
+    - Vector1_7085023D: 2.78
+    - Vector1_8694EEAC: 0.37
+    - Vector1_EDDB20ED: 0.05
+    m_Colors:
+    - Color_E4B52B44: {r: 0, g: 14.754423, b: 14.754423, a: 0}
