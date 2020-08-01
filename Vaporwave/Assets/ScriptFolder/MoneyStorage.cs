@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class MoneyStorage : MonoBehaviour
 {
-    int money;
-    Dictionary<string, int> SongPack = new Dictionary<string, int>();
-    Dictionary<string, int> UpgradePath = new Dictionary<string, int>();
+    private static MoneyStorage storageUnit;
+    static int money;
+    static Dictionary<string, int> SongPack = new Dictionary<string, int>();
+    static Dictionary<string, int> UpgradePath = new Dictionary<string, int>();
+    bool initialize = false;
 
     void Awake() {
-      DontDestroyOnLoad(this.gameObject);
+      if(storageUnit != null && storageUnit != this){
+        Destroy(this.gameObject);
+      } else {
+        storageUnit = this;
+        DontDestroyOnLoad(this.gameObject);
+      }
     }
 
     void Start() {
+      if (!initialize){
         SongPack["R&B"] = 0;
         SongPack["Dance"] = 0;
         SongPack["Alt"] = 0;
@@ -23,29 +31,33 @@ public class MoneyStorage : MonoBehaviour
         UpgradePath["Wield"] = 0;
         UpgradePath["Shield"] = 0;
         UpgradePath["Shockwave"] = 0;
+        initialize = true;
+      }
+      string RB = "R&B";
+      print("current index of R&B is " + SongPack[RB]);
     }
 
-    public void MoneyHit(int moneyValue){
+    public static void MoneyHit(int moneyValue){
       money += moneyValue;
     }
 
     //getters
-    public float GetMoney(){
+    public static float GetMoney(){
       return money;
     }
-    public int GetSongPack(string genre){
+    public static int GetSongPack(string genre){
       return SongPack[genre];
     }
 
-    public void SetSongPack(string genre) {
+    public static void SetSongPack(string genre) {
         SongPack[genre]++;
     }
 
-    public int GetUpgradePath(string category){
+    public static int GetUpgradePath(string category){
       return UpgradePath[category];
     }
 
-    public void SetUpgradePath(string category) {
+    public static void SetUpgradePath(string category) {
         UpgradePath[category]++;
     }
 

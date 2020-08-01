@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class EnemyCount : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] private GameObject winScreen;
+    [SerializeField] GameObject winScreen;
     private int count;
+    WinScreen winScript;
 
     void Start()
     {
         count = gameObject.transform.childCount;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        winScript = winScreen.GetComponent<WinScreen>();
     }
 
     public void DecrementCount() {
         count--;
         if (count == 0) {
             winScreen.SetActive(true);
+            winScript.Check();
         }
         print(count);
     }
