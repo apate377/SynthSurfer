@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
             mousePos.transform.position = hit.point;
         }
       }
-      if (Vector3.Distance(mousePos.transform.position, Car.transform.position) > 5f){
+      if (Vector3.Distance(mousePos.transform.position, Car.transform.position) > 5f && !PauseMenu.GameIsPaused){
         Car.transform.LookAt(mousePos.transform.position);
       }
     }

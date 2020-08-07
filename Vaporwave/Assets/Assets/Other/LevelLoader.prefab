@@ -809,7 +809,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 8956066293524473075}
   transitionTime: 1
-  OptionsMenu: {fileID: 0}
 --- !u!1 &7224921437395540884
 GameObject:
   m_ObjectHideFlags: 0
