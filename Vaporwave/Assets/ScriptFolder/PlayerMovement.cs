@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Shoot() {
-      if (CrossPlatformInputManager.GetButtonDown("Fire1") && BPSTiming.getCanShoot() )
+      if (CrossPlatformInputManager.GetButtonDown("Fire1") && BPSTiming.getCanShoot() && !PauseMenu.GameIsPaused)
       {
         SetGunActive(true);
       }
