@@ -18,8 +18,16 @@ public class PlayerHealth : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider collider){
-        TakeDamage(5);
+    void OnTriggerEnter(Collider collider) {
+        // The layer for the health pack prefab is "PostProcessing" but it
+        // should be "HealthPack." However, when I change the layer, the health
+        // pack prefab disappears.
+        if (collider.gameObject.layer == LayerMask.NameToLayer("PostProcessing")) {
+            AddHealth(25);
+            Destroy(collider.gameObject);
+        } else {
+            TakeDamage(5);
+        }
   }
 
     void TakeDamage(int damage){
@@ -29,5 +37,14 @@ public class PlayerHealth : MonoBehaviour
         deathScreen.SetActive(true);
         playerControl.GetComponent<PlayerMovement>().SetPlayerEnabled(false);
       }
+    }
+
+    void AddHealth(int health) {
+        print("added health");
+        currentHealth += health;
+        if (currentHealth > maxHealth) {
+            currentHealth = maxHealth;
+        }
+        healthBar.SetHealth(currentHealth);
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 public class OptionsControl : MonoBehaviour
 {
     private float muteValue = 0.0001f;
-    private float setValue = 1f;
+    public static float setValue = 1f;
     private bool mute = false;
     private Slider volumeSlider;
     private RawImage CancelImage;
@@ -22,6 +22,12 @@ public class OptionsControl : MonoBehaviour
         volumeSlider = Volume.GetComponent<Slider>();
         CancelImage = MuteSign.GetComponent<RawImage>();
         CancelImage.enabled = false;
+
+        volumeSlider.value = setValue;
+    }
+
+    void Update () {
+        setValue = volumeSlider.value;
     }
 
     public void MuteVolume() {
