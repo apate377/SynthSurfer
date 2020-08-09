@@ -10,18 +10,19 @@ public class MainMenu : MonoBehaviour
     AsyncOperation asyncOperation;
 
     public void PlayGame(int level){
-      StartCoroutine(LoadLevel(level));
+        StartCoroutine(LoadLevel(level));
     }
-    public void GoBackToMenu(){
-      StartCoroutine(LoadLevel(0));
+    public void GoBackToMenu() {
+        StartCoroutine(LoadLevel(0));
     }
     public void RestartLevel(){
-      StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
     }
 
     IEnumerator LoadLevel(int index) {
       transition.SetTrigger("Start");
-      yield return new WaitForSeconds(transitionTime);
+      yield return new WaitForSeconds(PauseMenu.GameIsPaused ? 0f : transitionTime);
+      Time.timeScale = 1f;
       asyncOperation = SceneManager.LoadSceneAsync(index);
     }
 
