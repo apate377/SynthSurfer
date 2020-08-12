@@ -8,12 +8,24 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject PauseView;
     public GameObject OptionsView;
+    public GameObject InstructionsView;
+    public GameObject Box1, Box2;
+    //private Animator animator;
+    //private bool expanded = false;
+
+    void Start() {
+        /*
+        animator = Box.GetComponent<Animator>();
+        animator.Play("IdleNormal");
+        */
+    }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             Pause();
         }
+
     }
 
     public void Pause() {
@@ -25,6 +37,9 @@ public class PauseMenu : MonoBehaviour
             gameObject.SetActive(true);
             PauseView.SetActive(true);
             OptionsView.SetActive(false);
+            InstructionsView.SetActive(false);
+            Box1.SetActive(true);
+            Box2.SetActive(false);
             Time.timeScale = 0f;
             GameIsPaused = true;
         }
@@ -36,7 +51,24 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Back() {
-        PauseView.SetActive(true);
+        InstructionsView.SetActive(false);
         OptionsView.SetActive(false);
+        PauseView.SetActive(true);
+        Box1.SetActive(true);
+        Box2.SetActive(false);
+    }
+
+    public void HowToPlay() {
+        /*if (!expanded) {
+            animator.SetBool("Expand", true);
+            animator.SetBool("Shrink", false);
+        } else {
+            animator.SetBool("Shrink", true);
+            animator.SetBool("Expand", false);
+        } */
+        Box1.SetActive(false);
+        Box2.SetActive(true);
+        PauseView.SetActive(false);
+        InstructionsView.SetActive(true);
     }
 }
