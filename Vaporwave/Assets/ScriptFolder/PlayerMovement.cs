@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float xSpeed = 200f;
     [SerializeField] private float zSpeed = 200f;
     [SerializeField] private GameObject Car;
-    [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform firePoint, firePointDual;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject mousePos;
     [SerializeField] private float bulletForce = 20f;
@@ -17,8 +17,15 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rbCar;
     private bool playerEnabled = true;
 
+    private Vector3 dualOffset = new Vector3(0,0,0.3f);
+
+
     void Start(){
       rbCar = Car.GetComponent<Rigidbody>();
+
+      if (UpgradeHandler.dualWielded) {
+          firePoint.localPosition -= dualOffset;
+      }
     }
     void Update()
     {
@@ -42,10 +49,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void SetGunActive(bool isActive)
     {
-      if (isActive){
-       GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-       Rigidbody rb =bullet.GetComponent<Rigidbody>();
-       rb.AddForce(firePoint.right * bulletForce, ForceMode.Impulse);
+      if(isActive) {
+        if(UpgradeHandler.dualWielded) {
+          GameObject bullet0 = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+          Rigidbody rb0 =bullet0.GetComponent<Rigidbody>();
+          rb0.AddForce(firePoint.right * bulletForce, ForceMode.Impulse);
+
+          GameObject bullet1 = Instantiate(bulletPrefab, firePointDual.position, firePointDual.rotation);
+          Rigidbody rb1 =bullet1.GetComponent<Rigidbody>();
+          rb1.AddForce(firePointDual.right * bulletForce, ForceMode.Impulse);
+        } else {
+         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+         Rigidbody rb = bullet.GetComponent<Rigidbody>();
+         rb.AddForce(firePoint.right * bulletForce, ForceMode.Impulse);
+        }
      }
     }
 
