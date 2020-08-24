@@ -41,6 +41,10 @@ public class MoneyStorage : MonoBehaviour
       money += moneyValue;
     }
 
+    public static void MoneyLoss(int moneyValue){
+        money -= moneyValue;
+    }
+
     //getters
     public static float GetMoney(){
       return money;

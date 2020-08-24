@@ -54,6 +54,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -65,6 +67,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -77,6 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &215303235800578482
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +110,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3561577783972555175}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2018671199999277306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7652504508303678270}
+  m_Layer: 12
+  m_Name: Firepoint Dual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7652504508303678270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018671199999277306}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.5, y: 2, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3561577783972555175}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6307581937565644706
 GameObject:
@@ -230,6 +264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 8222347415669711557, guid: 3c508df4f338a4632899ade8a133a5d2,
     type: 3}
+  deathScreen: {fileID: 0}
+  playerControl: {fileID: 0}
 --- !u!114 &74477259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa36dcca118f54ed9848c24a12a07787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathScreen: {fileID: 0}
+  playerControl: {fileID: 0}
   healthBar: {fileID: 8743631214419778750, guid: d30869ff93cdd4d11937eaa5a21f2294,
     type: 3}
 --- !u!1 &9166962523645720101
@@ -279,6 +317,7 @@ Transform:
   - {fileID: 567717607379235541}
   - {fileID: 567717607128294659}
   - {fileID: 567717606692424380}
+  - {fileID: 7652504508303678270}
   m_Father: {fileID: 7180987882452631451}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}

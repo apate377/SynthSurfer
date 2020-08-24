@@ -9,15 +9,13 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseView;
     public GameObject OptionsView;
     public GameObject InstructionsView;
-    public GameObject Box1, Box2;
-    //private Animator animator;
-    //private bool expanded = false;
+    public GameObject Box;
+    private Animator animator;
+    private float transitionTime = 0.5f;
 
     void Start() {
-        /*
         animator = Box.GetComponent<Animator>();
-        animator.Play("IdleNormal");
-        */
+        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
     void Update()
@@ -38,8 +36,8 @@ public class PauseMenu : MonoBehaviour
             PauseView.SetActive(true);
             OptionsView.SetActive(false);
             InstructionsView.SetActive(false);
-            Box1.SetActive(true);
-            Box2.SetActive(false);
+            //Box1.SetActive(true);
+            //Box2.SetActive(false);
             Time.timeScale = 0f;
             GameIsPaused = true;
         }
@@ -54,21 +52,21 @@ public class PauseMenu : MonoBehaviour
         InstructionsView.SetActive(false);
         OptionsView.SetActive(false);
         PauseView.SetActive(true);
-        Box1.SetActive(true);
-        Box2.SetActive(false);
+
+        animator.SetBool("Shrink", true);
+        animator.SetBool("Expand", false);
     }
 
     public void HowToPlay() {
-        /*if (!expanded) {
-            animator.SetBool("Expand", true);
-            animator.SetBool("Shrink", false);
-        } else {
-            animator.SetBool("Shrink", true);
-            animator.SetBool("Expand", false);
-        } */
-        Box1.SetActive(false);
-        Box2.SetActive(true);
         PauseView.SetActive(false);
+        StartCoroutine(ShowInstructions());
+
+        animator.SetBool("Expand", true);
+        animator.SetBool("Shrink", false);
+    }
+
+    IEnumerator ShowInstructions() {
+        yield return new WaitForSecondsRealtime(transitionTime);
         InstructionsView.SetActive(true);
     }
 }
