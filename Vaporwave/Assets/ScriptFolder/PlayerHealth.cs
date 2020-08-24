@@ -28,7 +28,14 @@ public class PlayerHealth : MonoBehaviour
         } else {
             TakeDamage(5);
         }
-  }
+      }
+
+    void OnParticleCollision(){
+        print("Collision");
+    }
+    void OnParticleTrigger(){
+      print("Triggered");
+    }
 
     void TakeDamage(int damage){
       currentHealth -= damage;
