@@ -5,7 +5,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private int maxHealth = 100;
+    private int maxHealth = 1000;
     private int currentHealth;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] GameObject playerControl;
@@ -23,19 +23,16 @@ public class PlayerHealth : MonoBehaviour
         // should be "HealthPack." However, when I change the layer, the health
         // pack prefab disappears.
         if (collider.gameObject.layer == LayerMask.NameToLayer("PostProcessing")) {
-            AddHealth(25);
+            AddHealth(250);
             Destroy(collider.gameObject);
         } else {
-            TakeDamage(5);
+            TakeDamage(50);
         }
-      }
+     }
 
-    void OnParticleCollision(){
-        print("Collision");
-    }
-    void OnParticleTrigger(){
-      print("Triggered");
-    }
+     void OnParticleCollision(GameObject other) {
+         TakeDamage(5);
+     }
 
     void TakeDamage(int damage){
       currentHealth -= damage;
@@ -47,7 +44,6 @@ public class PlayerHealth : MonoBehaviour
     }
 
     void AddHealth(int health) {
-        print("added health");
         currentHealth += health;
         if (currentHealth > maxHealth) {
             currentHealth = maxHealth;

@@ -9,7 +9,6 @@ public class Bullet : MonoBehaviour
   void OnTriggerEnter(Collider collider){
       if(collider.gameObject.layer == LayerMask.NameToLayer("Enemy") || collider.gameObject.layer == LayerMask.NameToLayer("Building")) {
           GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-          print(collider.gameObject.transform.parent.transform.parent.name);
           Destroy(effect, 5f);
           Destroy(gameObject);
       }

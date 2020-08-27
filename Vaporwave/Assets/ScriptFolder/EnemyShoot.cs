@@ -33,7 +33,6 @@ public class EnemyShoot : MonoBehaviour
 
           Vector3 rayDirection = player.transform.position - transform.position;
           Ray rayToPlayer = new Ray(transform.position, rayDirection);
-          Debug.DrawRay(transform.position, rayDirection, Color.white);
 
           if (Physics.Raycast(rayToPlayer, out hit)) {
             chase = true;
@@ -55,10 +54,9 @@ public class EnemyShoot : MonoBehaviour
     void Shoot(){
       if (shootTime > BPSTiming.getSPB() * .98f) {
          GameObject Enemybullet = Instantiate(EnemyBulletPrefab, EnemyFirePoint.position, EnemyFirePoint.rotation);
-         Rigidbody rb =Enemybullet.GetComponent<Rigidbody>();
+         Rigidbody rb = Enemybullet.GetComponent<Rigidbody>();
          rb.AddForce(EnemyFirePoint.right * bulletForce, ForceMode.Impulse);
          shootTime = 0f;
        }
-
     }
 }

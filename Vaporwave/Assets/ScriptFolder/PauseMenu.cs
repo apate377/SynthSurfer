@@ -36,8 +36,6 @@ public class PauseMenu : MonoBehaviour
             PauseView.SetActive(true);
             OptionsView.SetActive(false);
             InstructionsView.SetActive(false);
-            //Box1.SetActive(true);
-            //Box2.SetActive(false);
             Time.timeScale = 0f;
             GameIsPaused = true;
         }
